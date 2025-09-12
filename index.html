@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DEMO - descubre tu premio - reste juice</title>
+    <title>descubre tu premio - reste juice</title>
     <style>
         * {
             margin: 0;
@@ -17,7 +17,6 @@
             min-height: 100vh;
             padding: 15px;
             position: relative;
-            padding-top: 50px;
         }
 
         /* Patrón sutil mexicano de fondo */
@@ -36,26 +35,10 @@
             z-index: -1;
         }
 
-        /* Banner de DEMO */
-        .demo-banner {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(45deg, #FF6B35, #F7931E);
-            color: white;
-            text-align: center;
-            padding: 8px;
-            font-weight: bold;
-            font-size: 0.9em;
-            z-index: 3000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-
         /* UNA sola bandera decorativa */
         .mexican-flag {
             position: absolute;
-            top: 60px;
+            top: 20px;
             right: 20px;
             width: 20px;
             height: 12px;
@@ -87,6 +70,16 @@
         @keyframes float {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
             50% { transform: translateY(-6px) rotate(2deg); }
+        }
+
+        /* Logo principal */
+        .main-logo {
+            display: block;
+            max-width: 120px;
+            height: auto;
+            margin: 0 auto 15px auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
         /* Contenedor principal */
@@ -225,22 +218,6 @@
             text-align: center;
         }
 
-        .reset-btn {
-            margin-top: 15px;
-            padding: 8px 15px;
-            background: linear-gradient(45deg, #FF6B35, #F7931E);
-            color: white;
-            border: none;
-            border-radius: 15px;
-            font-size: 0.8em;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .reset-btn:hover {
-            transform: translateY(-1px);
-        }
-
         /* Modales */
         .modal {
             position: fixed;
@@ -310,6 +287,18 @@
             font-weight: bold;
             color: #8B4513;
             box-shadow: 0 5px 15px rgba(255,215,0,0.2);
+            font-size: 0.9em;
+            line-height: 1.3;
+        }
+
+        .prize2-highlight {
+            background: linear-gradient(45deg, #58D68D, #2ECC71);
+            padding: 15px;
+            border-radius: 12px;
+            margin: 15px 0;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 5px 15px rgba(88,214,141,0.3);
             font-size: 0.9em;
             line-height: 1.3;
         }
@@ -443,6 +432,15 @@
             text-decoration: underline;
         }
 
+        .warning-message {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border: 2px solid #006847;
+            color: #006847;
+            padding: 20px;
+            border-radius: 12px;
+            font-weight: bold;
+        }
+
         /* Ocultar bandera en pantallas muy pequeñas */
         @media (max-width: 350px) {
             .mexican-flag {
@@ -462,7 +460,7 @@
         /* Tablet y desktop */
         @media (min-width: 768px) {
             body {
-                padding: 60px 30px 30px 30px;
+                padding: 30px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -491,15 +489,15 @@
             .food-emoji {
                 font-size: 3.5em;
             }
+            
+            .main-logo {
+                max-width: 150px;
+                margin-bottom: 20px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Banner de DEMO -->
-    <div class="demo-banner">
-        🚀 VERSIÓN DEMO - SIN RESTRICCIONES 🚀
-    </div>
-
     <!-- UNA sola bandera decorativa -->
     <div class="mexican-flag">
         <div class="flag-green"></div>
@@ -509,12 +507,12 @@
 
     <!-- Contenedor principal del juego -->
     <div class="game-container" id="gameContainer">
+        <img src="https://drive.google.com/uc?id=1b2UjF7fZ9FnjGzVCBfXz9pKAoT5nzSgd" alt="Reste Juice Logo" class="main-logo">
         <h1 class="title">¡descubre tu premio!</h1>
         <p class="subtitle">elige tu platillo favorito</p>
         
         <div class="description-text">
-            sabemos que septiembre es para disfrutar lo mejor de la comida típica y por eso queremos acompañarte después de toda esa fiesta de sabor.<br>
-            detrás de cada platillo hay un premio pensado para ti que te ayudarán a recargar energía y sentirte ligero después de la celebración.
+            disfruta de lo mejor de septiembre sin dejar de cuidar tu cuerpo con nuestra sorpresa que te ayudará a sentirte ligero después de la celebración.
         </div>
         
         <p class="instructions">¡uno de estos deliciosos platillos esconde tu premio!</p>
@@ -542,8 +540,6 @@
         <div class="footer-msg">
             <p>🎉 ¡celebra con reste juice! 🎉</p>
         </div>
-
-        <button class="reset-btn" onclick="resetDemo()">🔄 reiniciar demo</button>
     </div>
 
     <!-- Pantalla de agradecimiento -->
@@ -563,7 +559,6 @@
         <p style="margin-top: 15px; color: #666; font-size: 0.85em;">
             ¡comparte esta experiencia con tus amigos!
         </p>
-        <button class="reset-btn" onclick="resetDemo()">🔄 reiniciar demo</button>
     </div>
 
     <!-- Modal de Premio 1: Shots -->
@@ -585,7 +580,7 @@
         <div class="modal-content">
             <h2 class="modal-title win">🎉 ¡felicidades! 🎉</h2>
             <p class="modal-text">¡tu platillo favorito tenía el premio escondido!</p>
-            <div class="prize-highlight">
+            <div class="prize2-highlight">
                 llévate una caja detox one day y la segunda con 10% de descuento.
             </div>
             <p class="modal-text">¡toma captura de pantalla y contacta con nosotros para reclamar tu premio!</p>
@@ -606,14 +601,77 @@
         </div>
     </div>
 
+    <!-- Modal de Ya Jugó -->
+    <div class="modal" id="alreadyPlayedModal">
+        <div class="modal-content">
+            <div class="warning-message">
+                <h2>⚠️ ¡oops!</h2>
+                <p>ya participaste en este juego anteriormente.</p>
+                <p><strong>solo se permite una participación por persona.</strong></p>
+                <p style="margin-top: 15px;">¡gracias por tu comprensión! 😊</p>
+            </div>
+            <button class="btn btn-primary" onclick="closeAlreadyPlayed()">entendido</button>
+        </div>
+    </div>
+
     <script>
-        // VERSIÓN DEMO - SIN SISTEMA ANTI-TRAMPA
-        const WIN_PROBABILITY = 0.4; // 40% para mejor experiencia
+        // Sistema anti-trampas con 3 opciones
+        const STORAGE_KEY = 'reste_juice_game_played';
+        const PRIZE1_PROBABILITY = 0.3; // 30% shots
+        const PRIZE2_PROBABILITY = 0.3; // 30% detox
+        // 40% restante = no gana nada
         let gameActive = false;
 
+        // Verificar si ya jugó al cargar la página
+        window.addEventListener('DOMContentLoaded', function() {
+            checkIfAlreadyPlayed();
+        });
+
+        function checkIfAlreadyPlayed() {
+            const hasPlayed = localStorage.getItem(STORAGE_KEY) ||
+                             sessionStorage.getItem(STORAGE_KEY) ||
+                             getCookie(STORAGE_KEY);
+            
+            if (hasPlayed) {
+                showAlreadyPlayedModal();
+                return true;
+            }
+            return false;
+        }
+
+        function markAsPlayed() {
+            const timestamp = new Date().getTime();
+            localStorage.setItem(STORAGE_KEY, timestamp);
+            sessionStorage.setItem(STORAGE_KEY, timestamp);
+            setCookie(STORAGE_KEY, timestamp, 30);
+        }
+
+        function setCookie(name, value, days) {
+            const expires = new Date();
+            expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
+            document.cookie = name + '=' + value + ';expires=' + expires.toUTCString() + ';path=/';
+        }
+
+        function getCookie(name) {
+            const nameEQ = name + "=";
+            const ca = document.cookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
         function selectFood(foodType, element) {
+            if (checkIfAlreadyPlayed()) {
+                return;
+            }
+
             if (gameActive) return;
             gameActive = true;
+
+            markAsPlayed();
 
             // Animar el elemento seleccionado
             element.classList.add('selected-food');
@@ -633,15 +691,23 @@
             // Reproducir sonido
             playSelectionSound();
             
-            // Determinar resultado
-            const playerWins = Math.random() < WIN_PROBABILITY;
+            // Determinar resultado con 3 opciones
+            const randomNum = Math.random();
             
-            if (playerWins) {
+            if (randomNum < PRIZE1_PROBABILITY) {
+                // Premio 1: Shots (30%)
                 createConfetti();
                 setTimeout(() => {
                     document.getElementById('prizeModal').style.display = 'flex';
                 }, 1200);
+            } else if (randomNum < PRIZE1_PROBABILITY + PRIZE2_PROBABILITY) {
+                // Premio 2: Detox (30%)
+                createConfetti();
+                setTimeout(() => {
+                    document.getElementById('prize2Modal').style.display = 'flex';
+                }, 1200);
             } else {
+                // No gana nada (40%)
                 setTimeout(() => {
                     document.getElementById('loseModal').style.display = 'flex';
                 }, 1200);
@@ -735,8 +801,22 @@
             showCompletedScreen();
         }
 
+        function closePrize2() {
+            document.getElementById('prize2Modal').style.display = 'none';
+            showCompletedScreen();
+        }
+
         function closeLose() {
             document.getElementById('loseModal').style.display = 'none';
+            showCompletedScreen();
+        }
+
+        function showAlreadyPlayedModal() {
+            document.getElementById('alreadyPlayedModal').style.display = 'flex';
+        }
+
+        function closeAlreadyPlayed() {
+            document.getElementById('alreadyPlayedModal').style.display = 'none';
             showCompletedScreen();
         }
 
@@ -745,35 +825,23 @@
             document.getElementById('gameCompleted').style.display = 'block';
         }
 
-        // FUNCIÓN ESPECIAL PARA DEMO - Reiniciar el juego
-        function resetDemo() {
-            // Reiniciar variables
-            gameActive = false;
-            
-            // Mostrar pantalla principal
-            document.getElementById('gameContainer').style.display = 'block';
-            document.getElementById('gameCompleted').style.display = 'none';
-            document.getElementById('prizeModal').style.display = 'none';
-            document.getElementById('loseModal').style.display = 'none';
-            
-            // Resetear elementos de comida
-            const allFoodItems = document.querySelectorAll('.food-item');
-            allFoodItems.forEach(item => {
-                item.style.opacity = '1';
-                item.style.pointerEvents = 'auto';
-                item.classList.remove('selected-food');
-            });
-            
-            // Limpiar confetti restante
-            const confettiElements = document.querySelectorAll('.confetti, .food-burst');
-            confettiElements.forEach(el => {
-                if (el.parentNode) {
-                    el.parentNode.removeChild(el);
+        // Prevenir trucos adicionales
+        window.addEventListener('beforeunload', function() {
+            if (gameActive) {
+                markAsPlayed();
+            }
+        });
+
+        // Detectar herramientas de desarrollador
+        let devtools = false;
+        setInterval(function() {
+            if (window.outerHeight - window.innerHeight > 200 || window.outerWidth - window.innerWidth > 200) {
+                if (!devtools) {
+                    devtools = true;
+                    console.log("🌮 ¡juega limpio! 😊");
                 }
-            });
-            
-            console.log("🎮 Demo reiniciado - ¡Listo para otra demostración!");
-        }
+            }
+        }, 1000);
     </script>
 </body>
 </html>
