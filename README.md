@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¡Descubre tu Premio Mexicano!</title>
+    <title>DEMO - descubre tu premio - reste juice</title>
     <style>
         * {
             margin: 0;
@@ -34,27 +34,40 @@
             z-index: -1;
         }
 
-        /* Banderas decorativas - SIN la de arriba */
-        .mexican-flags {
+        /* Banner de DEMO */
+        .demo-banner {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
+            right: 0;
+            background: linear-gradient(45deg, #FF6B35, #F7931E);
+            color: white;
+            text-align: center;
+            padding: 8px;
+            font-weight: bold;
+            font-size: 0.9em;
+            z-index: 3000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
-        .flag {
+        body {
+            padding-top: 50px; /* Espacio para el banner */
+        }
+
+        /* UNA sola bandera decorativa */
+        .mexican-flag {
             position: absolute;
+            top: 60px;
+            right: 20px;
             width: 20px;
             height: 12px;
-            animation: float 4s ease-in-out infinite;
             border-radius: 2px;
             overflow: hidden;
             box-shadow: 0 1px 3px rgba(0,0,0,0.2);
             display: flex;
             flex-direction: column;
+            animation: float 4s ease-in-out infinite;
+            z-index: 1;
         }
 
         .flag-green { background: #006847; height: 33.33%; }
@@ -72,12 +85,6 @@
             font-size: 4px;
             color: #8B4513;
         }
-
-        /* Posicionamiento de banderas - SIN la de arriba que tapaba */
-        .flag:nth-child(1) { bottom: 20%; left: 8%; animation-delay: 0s; }
-        .flag:nth-child(2) { top: 25%; right: 12%; animation-delay: 1s; }
-        .flag:nth-child(3) { bottom: 35%; right: 20%; animation-delay: 1.5s; }
-        .flag:nth-child(4) { top: 60%; left: 5%; animation-delay: 2s; }
 
         @keyframes float {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
@@ -112,9 +119,9 @@
             display: none;
         }
 
-        /* Títulos */
+        /* Títulos en minúsculas */
         .title {
-            font-size: 1.8em;
+            font-size: 1.7em;
             font-weight: bold;
             margin-bottom: 8px;
             text-align: center;
@@ -126,15 +133,27 @@
         }
 
         .subtitle {
-            font-size: 1em;
+            font-size: 0.95em;
             color: #006847;
             margin-bottom: 15px;
             text-align: center;
             font-weight: 600;
         }
 
+        .description-text {
+            font-size: 0.8em;
+            color: #666;
+            margin: 15px 0;
+            text-align: center;
+            line-height: 1.5;
+            font-style: italic;
+            padding: 15px;
+            background: rgba(0, 104, 71, 0.03);
+            border-radius: 12px;
+        }
+
         .instructions {
-            font-size: 0.95em;
+            font-size: 0.9em;
             color: #006847;
             margin: 15px 0;
             text-align: center;
@@ -202,10 +221,26 @@
 
         .footer-msg {
             margin-top: 15px;
-            font-size: 0.9em;
+            font-size: 0.85em;
             color: #C8102E;
             font-weight: 500;
             text-align: center;
+        }
+
+        .reset-btn {
+            margin-top: 15px;
+            padding: 8px 15px;
+            background: linear-gradient(45deg, #FF6B35, #F7931E);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 0.8em;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .reset-btn:hover {
+            transform: translateY(-1px);
         }
 
         /* Modales */
@@ -246,7 +281,7 @@
         }
 
         .modal-title {
-            font-size: 1.6em;
+            font-size: 1.5em;
             margin-bottom: 15px;
             font-weight: bold;
         }
@@ -263,7 +298,7 @@
         }
 
         .modal-text {
-            font-size: 1em;
+            font-size: 0.95em;
             margin-bottom: 15px;
             line-height: 1.4;
             color: #333;
@@ -277,6 +312,8 @@
             font-weight: bold;
             color: #8B4513;
             box-shadow: 0 5px 15px rgba(255,215,0,0.2);
+            font-size: 0.9em;
+            line-height: 1.3;
         }
 
         .lose-highlight {
@@ -286,13 +323,15 @@
             margin: 15px 0;
             font-weight: bold;
             color: #666;
+            font-size: 0.9em;
+            line-height: 1.3;
         }
 
         .btn {
             padding: 12px 25px;
             border: none;
             border-radius: 20px;
-            font-size: 1em;
+            font-size: 0.95em;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -359,7 +398,7 @@
         }
 
         .completed-title {
-            font-size: 1.8em;
+            font-size: 1.7em;
             background: linear-gradient(45deg, #006847, #C8102E);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -370,7 +409,7 @@
         }
 
         .completed-text {
-            font-size: 1em;
+            font-size: 0.95em;
             color: #006847;
             margin-bottom: 20px;
             line-height: 1.5;
@@ -387,21 +426,16 @@
 
         .social-section h3 {
             margin-bottom: 10px;
-            font-size: 1em;
+            font-size: 0.95em;
         }
 
-        .warning-message {
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-            border: 2px solid #006847;
-            color: #006847;
-            padding: 20px;
-            border-radius: 12px;
-            font-weight: bold;
+        .social-section p {
+            font-size: 0.85em;
         }
 
-        /* Ocultar banderas en pantallas muy pequeñas */
+        /* Ocultar bandera en pantallas muy pequeñas */
         @media (max-width: 350px) {
-            .mexican-flags {
+            .mexican-flag {
                 display: none;
             }
             
@@ -411,14 +445,14 @@
             }
             
             .title {
-                font-size: 1.6em;
+                font-size: 1.5em;
             }
         }
 
         /* Tablet y desktop */
         @media (min-width: 768px) {
             body {
-                padding: 30px;
+                padding: 60px 30px 30px 30px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -437,11 +471,11 @@
             }
             
             .title {
-                font-size: 2.2em;
+                font-size: 2em;
             }
             
             .subtitle {
-                font-size: 1.2em;
+                font-size: 1.1em;
             }
             
             .food-emoji {
@@ -451,76 +485,72 @@
     </style>
 </head>
 <body>
-    <!-- Banderas decorativas SIN la de arriba -->
-    <div class="mexican-flags">
-        <div class="flag">
-            <div class="flag-green"></div>
-            <div class="flag-white"><span class="eagle">🦅</span></div>
-            <div class="flag-red"></div>
-        </div>
-        <div class="flag">
-            <div class="flag-green"></div>
-            <div class="flag-white"><span class="eagle">🦅</span></div>
-            <div class="flag-red"></div>
-        </div>
-        <div class="flag">
-            <div class="flag-green"></div>
-            <div class="flag-white"><span class="eagle">🦅</span></div>
-            <div class="flag-red"></div>
-        </div>
-        <div class="flag">
-            <div class="flag-green"></div>
-            <div class="flag-white"><span class="eagle">🦅</span></div>
-            <div class="flag-red"></div>
-        </div>
+    <!-- Banner de DEMO -->
+    <div class="demo-banner">
+        🚀 VERSIÓN DEMO - SIN RESTRICCIONES 🚀
+    </div>
+
+    <!-- UNA sola bandera decorativa -->
+    <div class="mexican-flag">
+        <div class="flag-green"></div>
+        <div class="flag-white"><span class="eagle">🦅</span></div>
+        <div class="flag-red"></div>
     </div>
 
     <!-- Contenedor principal del juego -->
     <div class="game-container" id="gameContainer">
-        <h1 class="title">¡Descubre tu Premio!</h1>
-        <p class="subtitle">🇲🇽 Elige tu platillo mexicano favorito 🇲🇽</p>
+        <h1 class="title">¡descubre tu premio!</h1>
+        <p class="subtitle">🇲🇽 elige tu platillo favorito 🇲🇽</p>
         
-        <p class="instructions">¡Uno de estos deliciosos platillos esconde tu premio!</p>
+        <div class="description-text">
+            sabemos que septiembre es para disfrutar lo mejor de la comida típica🥳 y por eso queremos acompañarte después de toda esa fiesta de sabor.<br>
+            detrás de cada platillo hay un premio pensado para ti que te ayudarán a recargar energía y sentirte ligero después de la celebración.
+        </div>
+        
+        <p class="instructions">¡uno de estos deliciosos platillos esconde tu premio!</p>
         
         <div class="food-grid">
             <div class="food-item" onclick="selectFood('pozole', this)">
                 <span class="food-emoji">🍲</span>
-                <div class="food-name">Pozole</div>
-                <div class="food-description">Tradicional sopa con maíz y carne</div>
+                <div class="food-name">pozole</div>
+                <div class="food-description">tradicional sopa con maíz y carne</div>
             </div>
             
             <div class="food-item" onclick="selectFood('enchiladas', this)">
-                <span class="food-emoji">🌯</span>
-                <div class="food-name">Enchiladas</div>
-                <div class="food-description">Tortillas bañadas en salsa picante</div>
+                <span class="food-emoji">🫔</span>
+                <div class="food-name">enchiladas</div>
+                <div class="food-description">tortillas bañadas en salsa roja picante</div>
             </div>
             
             <div class="food-item" onclick="selectFood('tacos', this)">
                 <span class="food-emoji">🌮</span>
-                <div class="food-name">Tacos</div>
-                <div class="food-description">El platillo más querido de México</div>
+                <div class="food-name">tacos</div>
+                <div class="food-description">el platillo más querido de méxico</div>
             </div>
         </div>
         
         <div class="footer-msg">
-            <p>🎉 ¡Celebra con Reste Juice! 🎉</p>
+            <p>🎉 ¡celebra con reste juice! 🎉</p>
         </div>
+
+        <button class="reset-btn" onclick="resetDemo()">🔄 reiniciar demo</button>
     </div>
 
     <!-- Pantalla de agradecimiento -->
     <div class="game-completed" id="gameCompleted">
-        <h2 class="completed-title">¡Gracias por participar! 🎊</h2>
+        <h2 class="completed-title">¡gracias por participar! 🎊</h2>
         <p class="completed-text">
-            ¡Esperamos que hayas disfrutado de nuestro juego mexicano!<br>
-            Este septiembre celebramos contigo las fiestas patrias.
+            ¡esperamos que hayas disfrutado de nuestro juego!<br>
+            este septiembre celebramos contigo las fiestas patrias.
         </p>
         <div class="social-section">
-            <h3>📱 ¡Síguenos para más sorpresas!</h3>
-            <p>🎁 Más promociones • 🎉 Eventos especiales • 📢 Noticias</p>
+            <h3>📱 ¡síguenos para más sorpresas!</h3>
+            <p>🎁 más promociones • 🎉 eventos especiales • 📢 noticias</p>
         </div>
-        <p style="margin-top: 15px; color: #666; font-size: 0.9em;">
-            ¡Comparte esta experiencia con tus amigos!
+        <p style="margin-top: 15px; color: #666; font-size: 0.85em;">
+            ¡comparte esta experiencia con tus amigos!
         </p>
+        <button class="reset-btn" onclick="resetDemo()">🔄 reiniciar demo</button>
     </div>
 
     <!-- Modal de Premio -->
@@ -529,10 +559,10 @@
             <h2 class="modal-title win">🎉 ¡felicidades! 🎉</h2>
             <p class="modal-text">¡tu platillo favorito tenía el premio escondido!</p>
             <div class="prize-highlight">
-                <strong>gratis pack de 2 immune boost 50 ml + 2 gingerlicious 50 ml.</strong><br>
+                gratis pack de 2 immune boost 50 ml + 2 gingerlicious 50 ml.<br>
                 con valor de $160 mxn en tu próxima compra.
             </div>
-            <p class="modal-text">¡contacta con nosotros para reclamar tu premio!</p>
+            <p class="modal-text">¡toma captura de pantalla y contacta con nosotros para reclamar tu premio!</p>
             <button class="btn btn-primary" onclick="closePrize()">¡increíble!</button>
         </div>
     </div>
@@ -540,86 +570,24 @@
     <!-- Modal de Pérdida -->
     <div class="modal lose-modal" id="loseModal">
         <div class="modal-content">
-            <h2 class="modal-title lose">😅 ¡qué lástima!</h2>
+            <h2 class="modal-title lose">😅 ¡suerte para la próxima!</h2>
             <p class="modal-text">¡este platillo no tenía premio escondido!</p>
             <div class="lose-highlight">
-                <strong>llévate una caja detox one day y la segunda con 10% de descuento.</strong><br>
-                pero no te preocupes, siempre hay más oportunidades
+                pero no te preocupes, siempre hay más oportunidades.<br>
+                ¡síguenos en redes para más sorpresas!
             </div>
-            <p class="modal-text">¡síguenos en redes para más sorpresas!</p>
             <button class="btn btn-secondary" onclick="closeLose()">¡entendido!</button>
         </div>
     </div>
 
-    <!-- Modal de Ya Jugó -->
-    <div class="modal" id="alreadyPlayedModal">
-        <div class="modal-content">
-            <div class="warning-message">
-                <h2>⚠️ ¡oops!</h2>
-                <p>ya participaste en este juego anteriormente.</p>
-                <p><strong>solo se permite una participación por persona.</strong></p>
-                <p style="margin-top: 15px;">¡gracias por tu comprensión! 😊</p>
-            </div>
-            <button class="btn btn-primary" onclick="closeAlreadyPlayed()">entendido</button>
-        </div>
-    </div>
-
     <script>
-        // Sistema anti-trampas
-        const STORAGE_KEY = 'mexican_food_game_played';
-        const WIN_PROBABILITY = 0.3; // 30% de ganar
+        // VERSIÓN DEMO - SIN SISTEMA ANTI-TRAMPA
+        const WIN_PROBABILITY = 0.4; // 40% para mejor experiencia
         let gameActive = false;
 
-        // Verificar si ya jugó al cargar la página
-        window.addEventListener('DOMContentLoaded', function() {
-            checkIfAlreadyPlayed();
-        });
-
-        function checkIfAlreadyPlayed() {
-            const hasPlayed = localStorage.getItem(STORAGE_KEY) ||
-                             sessionStorage.getItem(STORAGE_KEY) ||
-                             getCookie(STORAGE_KEY);
-            
-            if (hasPlayed) {
-                showAlreadyPlayedModal();
-                return true;
-            }
-            return false;
-        }
-
-        function markAsPlayed() {
-            const timestamp = new Date().getTime();
-            localStorage.setItem(STORAGE_KEY, timestamp);
-            sessionStorage.setItem(STORAGE_KEY, timestamp);
-            setCookie(STORAGE_KEY, timestamp, 30);
-        }
-
-        function setCookie(name, value, days) {
-            const expires = new Date();
-            expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
-            document.cookie = name + '=' + value + ';expires=' + expires.toUTCString() + ';path=/';
-        }
-
-        function getCookie(name) {
-            const nameEQ = name + "=";
-            const ca = document.cookie.split(';');
-            for (let i = 0; i < ca.length; i++) {
-                let c = ca[i];
-                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-            }
-            return null;
-        }
-
         function selectFood(foodType, element) {
-            if (checkIfAlreadyPlayed()) {
-                return;
-            }
-
             if (gameActive) return;
             gameActive = true;
-
-            markAsPlayed();
 
             // Animar el elemento seleccionado
             element.classList.add('selected-food');
@@ -657,7 +625,7 @@
         function createFoodBurst(element, foodType) {
             const foodEmojis = {
                 'pozole': ['🌽', '🥄', '🍲', '🌶️'],
-                'enchiladas': ['🌯', '🧄', '🧅', '🌶️'],
+                'enchiladas': ['🫔', '🧄', '🧅', '🌶️'],
                 'tacos': ['🌮', '🥩', '🧅', '🌿']
             };
             
@@ -746,37 +714,40 @@
             showCompletedScreen();
         }
 
-        function showAlreadyPlayedModal() {
-            document.getElementById('alreadyPlayedModal').style.display = 'flex';
-        }
-
-        function closeAlreadyPlayed() {
-            document.getElementById('alreadyPlayedModal').style.display = 'none';
-            showCompletedScreen();
-        }
-
         function showCompletedScreen() {
             document.getElementById('gameContainer').style.display = 'none';
             document.getElementById('gameCompleted').style.display = 'block';
         }
 
-        // Prevenir trucos adicionales
-        window.addEventListener('beforeunload', function() {
-            if (gameActive) {
-                markAsPlayed();
-            }
-        });
-
-        // Detectar herramientas de desarrollador
-        let devtools = false;
-        setInterval(function() {
-            if (window.outerHeight - window.innerHeight > 200 || window.outerWidth - window.innerWidth > 200) {
-                if (!devtools) {
-                    devtools = true;
-                    console.log("🌮 ¡Juega limpio, compadre! 😊");
+        // FUNCIÓN ESPECIAL PARA DEMO - Reiniciar el juego
+        function resetDemo() {
+            // Reiniciar variables
+            gameActive = false;
+            
+            // Mostrar pantalla principal
+            document.getElementById('gameContainer').style.display = 'block';
+            document.getElementById('gameCompleted').style.display = 'none';
+            document.getElementById('prizeModal').style.display = 'none';
+            document.getElementById('loseModal').style.display = 'none';
+            
+            // Resetear elementos de comida
+            const allFoodItems = document.querySelectorAll('.food-item');
+            allFoodItems.forEach(item => {
+                item.style.opacity = '1';
+                item.style.pointerEvents = 'auto';
+                item.classList.remove('selected-food');
+            });
+            
+            // Limpiar confetti restante
+            const confettiElements = document.querySelectorAll('.confetti, .food-burst');
+            confettiElements.forEach(el => {
+                if (el.parentNode) {
+                    el.parentNode.removeChild(el);
                 }
-            }
-        }, 1000);
+            });
+            
+            console.log("🎮 Demo reiniciado - ¡Listo para otra demostración!");
+        }
     </script>
 </body>
 </html>
