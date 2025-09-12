@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -527,29 +526,28 @@
     <!-- Modal de Premio -->
     <div class="modal" id="prizeModal">
         <div class="modal-content">
-            <h2 class="modal-title win">🎉 ¡FELICIDADES! 🎉</h2>
-            <p class="modal-text">¡Tu platillo favorito tenía el premio escondido!</p>
+            <h2 class="modal-title win">🎉 ¡felicidades! 🎉</h2>
+            <p class="modal-text">¡tu platillo favorito tenía el premio escondido!</p>
             <div class="prize-highlight">
-                <strong>Pack de 4 shots para tu siguiente compra:</strong><br>
-                • Immune Boost 50 ml<br>
-                • Gingerlicious 50 ml
+                <strong>gratis pack de 2 immune boost 50 ml + 2 gingerlicious 50 ml.</strong><br>
+                con valor de $160 mxn en tu próxima compra.
             </div>
-            <p class="modal-text">¡Contacta con nosotros para reclamar tu premio!</p>
-            <button class="btn btn-primary" onclick="closePrize()">¡Increíble!</button>
+            <p class="modal-text">¡contacta con nosotros para reclamar tu premio!</p>
+            <button class="btn btn-primary" onclick="closePrize()">¡increíble!</button>
         </div>
     </div>
 
     <!-- Modal de Pérdida -->
     <div class="modal lose-modal" id="loseModal">
         <div class="modal-content">
-            <h2 class="modal-title lose">😅 ¡Qué lástima!</h2>
-            <p class="modal-text">¡Este platillo no tenía premio escondido!</p>
+            <h2 class="modal-title lose">😅 ¡qué lástima!</h2>
+            <p class="modal-text">¡este platillo no tenía premio escondido!</p>
             <div class="lose-highlight">
-                <strong>¡Suerte para la próxima! 🍀</strong><br>
-                Pero no te preocupes, siempre hay más oportunidades
+                <strong>llévate una caja detox one day y la segunda con 10% de descuento.</strong><br>
+                pero no te preocupes, siempre hay más oportunidades
             </div>
-            <p class="modal-text">¡Síguenos en redes para más sorpresas!</p>
-            <button class="btn btn-secondary" onclick="closeLose()">¡Entendido!</button>
+            <p class="modal-text">¡síguenos en redes para más sorpresas!</p>
+            <button class="btn btn-secondary" onclick="closeLose()">¡entendido!</button>
         </div>
     </div>
 
@@ -557,12 +555,12 @@
     <div class="modal" id="alreadyPlayedModal">
         <div class="modal-content">
             <div class="warning-message">
-                <h2>⚠️ ¡Oops!</h2>
-                <p>Ya participaste en este juego anteriormente.</p>
-                <p><strong>Solo se permite una participación por persona.</strong></p>
-                <p style="margin-top: 15px;">¡Gracias por tu comprensión! 😊</p>
+                <h2>⚠️ ¡oops!</h2>
+                <p>ya participaste en este juego anteriormente.</p>
+                <p><strong>solo se permite una participación por persona.</strong></p>
+                <p style="margin-top: 15px;">¡gracias por tu comprensión! 😊</p>
             </div>
-            <button class="btn btn-primary" onclick="closeAlreadyPlayed()">Entendido</button>
+            <button class="btn btn-primary" onclick="closeAlreadyPlayed()">entendido</button>
         </div>
     </div>
 
