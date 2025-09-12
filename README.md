@@ -384,87 +384,112 @@
             font-weight: bold;
         }
 
-        /* Responsive */
-        @media (max-width: 600px) {
+        /* Responsive - Móvil optimizado */
+        @media (max-width: 480px) {
             body {
-                padding: 15px 8px;
+                padding: 5px;
+                justify-content: flex-start;
             }
             
             .title { 
-                font-size: 1.8em;
-                margin-bottom: 8px;
-            }
-            
-            .subtitle { 
-                font-size: 1em;
-                margin-bottom: 15px;
-            }
-            
-            .instructions {
-                font-size: 1em;
-                margin: 15px 0 12px 0;
-            }
-            
-            .game-container, .game-completed { 
-                padding: 25px 15px;
-                border-radius: 20px;
-            }
-            
-            .food-item { 
-                padding: 18px 12px;
-                border-radius: 15px;
-            }
-            
-            .food-emoji { 
-                font-size: 2.8em;
+                font-size: 1.5em;
                 margin-bottom: 6px;
             }
             
-            .food-name {
-                font-size: 1.1em;
-                margin-bottom: 3px;
-            }
-            
-            .food-description {
-                font-size: 0.8em;
-            }
-            
-            .modal-content {
-                padding: 30px 20px;
-                margin: 10px;
-            }
-            
-            .footer-msg {
-                margin-top: 20px;
+            .subtitle { 
                 font-size: 0.9em;
-            }
-        }
-
-        @media (max-width: 400px) {
-            body {
-                padding: 10px 5px;
+                margin-bottom: 12px;
             }
             
-            .title { 
-                font-size: 1.6em;
+            .instructions {
+                font-size: 0.85em;
+                margin: 12px 0 8px 0;
             }
             
             .game-container, .game-completed { 
-                padding: 20px 12px;
+                padding: 18px 12px;
+                border-radius: 15px;
+                max-width: 350px;
+                margin: 5px auto;
+            }
+            
+            .food-item { 
+                padding: 12px 10px;
+                border-radius: 12px;
+                gap: 10px;
             }
             
             .food-emoji { 
-                font-size: 2.5em;
+                font-size: 2.2em;
+                margin-bottom: 4px;
+            }
+            
+            .food-name {
+                font-size: 1em;
+                margin-bottom: 2px;
+            }
+            
+            .food-description {
+                font-size: 0.7em;
+            }
+            
+            .modal-content {
+                padding: 20px 15px;
+                margin: 15px;
+                max-width: 300px;
+            }
+            
+            .footer-msg {
+                margin-top: 12px;
+                font-size: 0.8em;
+            }
+            
+            .mexican-flags {
+                display: none; /* Ocultar banderas en móvil muy pequeño */
             }
         }
 
-        /* Versión tablet/desktop */
-        @media (min-width: 601px) {
+        /* Versión tablet */
+        @media (min-width: 481px) and (max-width: 768px) {
+            .game-container, .game-completed {
+                max-width: 450px;
+                padding: 25px 20px;
+            }
+            
+            .title {
+                font-size: 1.8em;
+            }
+            
+            .subtitle {
+                font-size: 1em;
+            }
+        }
+
+        /* Versión desktop */
+        @media (min-width: 769px) {
+            body {
+                justify-content: center;
+                padding: 20px;
+            }
+            
             .food-grid {
                 display: grid;
                 grid-template-columns: repeat(3, 1fr);
                 gap: 20px;
                 margin: 25px 0;
+            }
+            
+            .game-container, .game-completed {
+                max-width: 550px;
+                padding: 35px 30px;
+            }
+            
+            .title {
+                font-size: 2.2em;
+            }
+            
+            .subtitle {
+                font-size: 1.2em;
             }
             
             .food-item {
