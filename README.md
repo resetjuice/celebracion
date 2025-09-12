@@ -386,15 +386,104 @@
 
         /* Responsive */
         @media (max-width: 600px) {
-            .title { font-size: 1.9em; }
-            .subtitle { font-size: 1.1em; }
-            .food-grid { 
-                grid-template-columns: 1fr; 
-                gap: 15px;
+            body {
+                padding: 15px 8px;
             }
-            .food-item { padding: 20px 12px; }
-            .food-emoji { font-size: 3em; }
-            .game-container, .game-completed { padding: 25px 18px; }
+            
+            .title { 
+                font-size: 1.8em;
+                margin-bottom: 8px;
+            }
+            
+            .subtitle { 
+                font-size: 1em;
+                margin-bottom: 15px;
+            }
+            
+            .instructions {
+                font-size: 1em;
+                margin: 15px 0 12px 0;
+            }
+            
+            .game-container, .game-completed { 
+                padding: 25px 15px;
+                border-radius: 20px;
+            }
+            
+            .food-item { 
+                padding: 18px 12px;
+                border-radius: 15px;
+            }
+            
+            .food-emoji { 
+                font-size: 2.8em;
+                margin-bottom: 6px;
+            }
+            
+            .food-name {
+                font-size: 1.1em;
+                margin-bottom: 3px;
+            }
+            
+            .food-description {
+                font-size: 0.8em;
+            }
+            
+            .modal-content {
+                padding: 30px 20px;
+                margin: 10px;
+            }
+            
+            .footer-msg {
+                margin-top: 20px;
+                font-size: 0.9em;
+            }
+        }
+
+        @media (max-width: 400px) {
+            body {
+                padding: 10px 5px;
+            }
+            
+            .title { 
+                font-size: 1.6em;
+            }
+            
+            .game-container, .game-completed { 
+                padding: 20px 12px;
+            }
+            
+            .food-emoji { 
+                font-size: 2.5em;
+            }
+        }
+
+        /* Versión tablet/desktop */
+        @media (min-width: 601px) {
+            .food-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+                margin: 25px 0;
+            }
+            
+            .food-item {
+                padding: 25px 15px;
+            }
+            
+            .food-emoji {
+                font-size: 3.5em;
+                margin-bottom: 10px;
+            }
+            
+            .food-name {
+                font-size: 1.3em;
+                margin-bottom: 5px;
+            }
+            
+            .food-description {
+                font-size: 0.9em;
+            }
         }
     </style>
 </head>
