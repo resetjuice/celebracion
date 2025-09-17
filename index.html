@@ -586,15 +586,96 @@
     </div>
 
     <script>
-        // VERSIÓN COMPLETA PARA PRESENTACIÓN - Sistema de probabilidades
+        // VERSIÓN FINAL CON SISTEMA ANTI-TRAMPA ROBUSTO
+        const STORAGE_KEY = 'reste_juice_game_played';
         const PRIZE1_PROBABILITY = 0.3; // 30% shots
         const PRIZE2_PROBABILITY = 0.3; // 30% detox
         // 40% restante = no gana nada
         let gameActive = false;
 
+        // Verificar si ya jugó al cargar la página
+        window.addEventListener('DOMContentLoaded', function() {
+            checkIfAlreadyPlayed();
+        });
+
+        function checkIfAlreadyPlayed() {
+            const hasPlayed = localStorage.getItem(STORAGE_KEY) ||
+                             sessionStorage.getItem(STORAGE_KEY) ||
+                             getCookie(STORAGE_KEY);
+            
+            if (hasPlayed) {
+                showAlreadyPlayedModal();
+                return true;
+            }
+            return false;
+        }
+
+        function markAsPlayed() {
+            const timestamp = new Date().getTime();
+            const deviceFingerprint = generateDeviceFingerprint();
+            const playData = JSON.stringify({
+                timestamp: timestamp,
+                fingerprint: deviceFingerprint,
+                userAgent: navigator.userAgent.substring(0, 50),
+                screen: screen.width + 'x' + screen.height,
+                timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
+            });
+            
+            // Guardar en múltiples lugares
+            localStorage.setItem(STORAGE_KEY, playData);
+            sessionStorage.setItem(STORAGE_KEY, playData);
+            setCookie(STORAGE_KEY, playData, 30);
+            
+            // Guardar también con una clave adicional basada en fingerprint
+            localStorage.setItem(STORAGE_KEY + '_' + deviceFingerprint, timestamp);
+        }
+
+        function generateDeviceFingerprint() {
+            // Crear un fingerprint único del dispositivo
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            ctx.textBaseline = 'top';
+            ctx.font = '14px Arial';
+            ctx.fillText('Reste Juice Game', 2, 2);
+            
+            const fingerprint = btoa(
+                navigator.userAgent + 
+                screen.width + screen.height + 
+                new Date().getTimezoneOffset() +
+                navigator.language +
+                (navigator.hardwareConcurrency || 0) +
+                canvas.toDataURL().substring(0, 50)
+            ).substring(0, 20);
+            
+            return fingerprint;
+        }
+
+        function setCookie(name, value, days) {
+            const expires = new Date();
+            expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
+            document.cookie = name + '=' + encodeURIComponent(value) + ';expires=' + expires.toUTCString() + ';path=/;SameSite=Strict';
+        }
+
+        function getCookie(name) {
+            const nameEQ = name + "=";
+            const ca = document.cookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) == 0) return decodeURIComponent(c.substring(nameEQ.length, c.length));
+            }
+            return null;
+        }
+
         function selectFood(foodType, element) {
+            if (checkIfAlreadyPlayed()) {
+                return;
+            }
+
             if (gameActive) return;
             gameActive = true;
+
+            markAsPlayed();
 
             // Animar el elemento seleccionado
             element.classList.add('selected-food');
@@ -734,20 +815,63 @@
             showCompletedScreen();
         }
 
+        function showAlreadyPlayedModal() {
+            document.getElementById('alreadyPlayedModal').style.display = 'flex';
+        }
+
+        function closeAlreadyPlayed() {
+            document.getElementById('alreadyPlayedModal').style.display = 'none';
+            showCompletedScreen();
+        }
+
         function showCompletedScreen() {
             document.getElementById('gameContainer').style.display = 'none';
             document.getElementById('gameCompleted').style.display = 'block';
         }
 
-        // Detectar herramientas de desarrollador 
+        // Prevenir trucos adicionales
+        window.addEventListener('beforeunload', function() {
+            if (gameActive) {
+                markAsPlayed();
+            }
+        });
+
+        // Prevenir refresh durante el juego
+        window.addEventListener('keydown', function(e) {
+            if ((e.key === 'F5') || (e.ctrlKey && e.key === 'r') || (e.metaKey && e.key === 'r')) {
+                if (gameActive) {
+                    e.preventDefault();
+                    alert('⚠️ No puedes recargar la página durante el juego');
+                }
+            }
+        });
+
+        // Detectar herramientas de desarrollador
         let devtools = false;
+        let devtoolsWarnings = 0;
         setInterval(function() {
             if (window.outerHeight - window.innerHeight > 200 || window.outerWidth - window.innerWidth > 200) {
                 if (!devtools) {
                     devtools = true;
+                    devtoolsWarnings++;
                     console.log("🌮 ¡juega limpio! 😊");
+                    
+                    if (devtoolsWarnings >= 3) {
+                        markAsPlayed();
+                        alert('⚠️ Se detectó uso de herramientas de desarrollador. El juego se ha bloqueado por seguridad.');
+                        showAlreadyPlayedModal();
+                    }
                 }
+            } else {
+                devtools = false;
             }
         }, 1000);
+
+        // Verificación adicional cada 30 segundos
+        setInterval(function() {
+            if (checkIfAlreadyPlayed() && document.getElementById('gameContainer').style.display !== 'none') {
+                showAlreadyPlayedModal();
+            }
+        }, 30000);
     </script>
 </body>
